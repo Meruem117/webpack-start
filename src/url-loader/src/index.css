@@ -1,6 +1,6 @@
 #box {
-    width: 250px;
-    height: 250px;
+    width: 600px;
+    height: 400px;
     background-image: url('./webpack.png');
     background-repeat: no-repeat;
     background-size: 100% 100%;

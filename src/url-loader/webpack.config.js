@@ -25,7 +25,10 @@ module.exports = {
                 use: [{
                     loader: 'url-loader',
                     options: {
-                        esModule: false
+                        limit: 8192,
+                        esModule: false,
+                        name: '[hash:10].[ext]',
+                        outputPath: 'images'
                     }
                 }],
                 type: 'javascript/auto'

@@ -1,4 +1,4 @@
-// webpack.config.js for base
+//* webpack.config.js for base
 const {
     resolve,
     join
@@ -9,22 +9,31 @@ const {
 } = require('clean-webpack-plugin')
 
 module.exports = {
-    entry: './src/base/index.js',
+    entry: './src/base/static/js/index.js',
     output: {
-        filename: 'main.js',
+        filename: 'js/main.js',
         path: resolve(__dirname, 'build')
     },
     module: {
         rules: [{
-            test: /\.css$/,
-            use: [
-                'style-loader',
-                'css-loader'
-            ]
-        }]
+                test: /\.css$/,
+                use: [
+                    'style-loader',
+                    'css-loader'
+                ]
+            },
+            {
+                test: /\.html$/,
+                use: [{
+                    loader: 'html-loader'
+                }]
+            }
+        ]
     },
     plugins: [
-        new HtmlWebpackPlugin(),
+        new HtmlWebpackPlugin({
+            template: './src/base/index.html'
+        }),
         new CleanWebpackPlugin()
     ],
     mode: 'development',
