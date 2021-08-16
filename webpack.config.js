@@ -1,3 +1,4 @@
+// webpack.config.js for base
 const {
     resolve,
     join
@@ -8,7 +9,7 @@ const {
 } = require('clean-webpack-plugin')
 
 module.exports = {
-    entry: './src/index.js',
+    entry: './src/base/index.js',
     output: {
         filename: 'main.js',
         path: resolve(__dirname, 'build')
