@@ -1,5 +1,6 @@
 const {
-    resolve
+    resolve,
+    join
 } = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const {
@@ -13,11 +14,22 @@ module.exports = {
         path: resolve(__dirname, 'build')
     },
     module: {
-        rules: []
+        rules: [{
+            test: /\.css$/,
+            use: [
+                'style-loader',
+                'css-loader'
+            ]
+        }]
     },
     plugins: [
         new HtmlWebpackPlugin(),
         new CleanWebpackPlugin()
     ],
-    mode: 'development'
+    mode: 'development',
+    devServer: {
+        contentBase: join(__dirname, 'build'),
+        compress: true,
+        port: 3500
+    }
 }
