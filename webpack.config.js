@@ -4,9 +4,13 @@ const {
     join
 } = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const {
     CleanWebpackPlugin
 } = require('clean-webpack-plugin')
+
+// process.env.NODE_ENV = 'development'
 
 module.exports = {
     entry: './src/base/static/js/index.js',
@@ -18,15 +22,28 @@ module.exports = {
         rules: [{
                 test: /\.css$/,
                 use: [
-                    'style-loader',
-                    'css-loader'
+                    // 'style-loader',
+                    MiniCssExtractPlugin.loader,
+                    'css-loader',
+                    'postcss-loader'
                 ]
             },
             {
-                test: /\.html$/,
+                test: /\.(jpg|png|gif|ico)$/,
                 use: [{
-                    loader: 'html-loader'
-                }]
+                    loader: 'url-loader',
+                    options: {
+                        limit: 8192,
+                        esModule: false,
+                        name: '[hash:10].[ext]',
+                        outputPath: 'images'
+                    }
+                }],
+                type: 'javascript/auto'
+            },
+            {
+                test: /\.html$/,
+                use: ['html-loader']
             }
         ]
     },
@@ -34,6 +51,10 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: './src/base/index.html'
         }),
+        new MiniCssExtractPlugin({
+            filename: 'css/main.css'
+        }),
+        new OptimizeCssAssetsPlugin(),
         new CleanWebpackPlugin()
     ],
     mode: 'development',
