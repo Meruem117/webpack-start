@@ -94,11 +94,13 @@ module.exports = {
     ],
     mode: 'development',
     // mode: 'production',
+    target: 'web',
     devServer: {
         contentBase: join(__dirname, 'build'),
         compress: true,
         port: 3500,
         // open:true,
         hot: true
-    }
+    },
+    devtool: 'source-map'
 }

@@ -9,9 +9,10 @@ body {
 
 .title {
     margin: 20px;
+    color: blue;
 }
 
 .logo {
-    width: 400px;
-    height: 600px;
+    width: 600px;
+    height: 400px;
 }
