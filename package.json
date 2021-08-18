@@ -17,13 +17,22 @@
   },
   "homepage": "https://github.com/Meruem117/webpack_start#readme",
   "dependencies": {
+    "core-js": "^3.16.2",
     "webpack": "^5.50.0",
     "webpack-cli": "^4.7.2"
   },
   "devDependencies": {
+    "@babel/core": "^7.15.0",
+    "@babel/preset-env": "^7.15.0",
     "autoprefixer": "^10.3.1",
+    "babel-loader": "^8.2.2",
     "clean-webpack-plugin": "^4.0.0-alpha.0",
     "css-loader": "^6.2.0",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-loader": "^4.0.2",
+    "eslint-plugin-import": "^2.24.0",
+    "eslint-plugin-prettier": "^3.4.0",
     "file-loader": "^6.2.0",
     "html-loader": "^2.1.2",
     "html-webpack-plugin": "^5.3.2",
@@ -36,17 +45,5 @@
     "style-loader": "^3.2.1",
     "url-loader": "^4.1.1",
     "webpack-dev-server": "^3.11.2"
-  },
-  "browserslist": {
-    "development": [
-      "last 1 chrome version",
-      "last 1 safari version",
-      "last 1 edge version"
-    ],
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ]
   }
 }

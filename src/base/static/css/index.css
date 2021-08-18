@@ -6,3 +6,12 @@ body {
     background-color: aqua;
     backface-visibility: hidden;
 }
+
+.title {
+    margin: 20px;
+}
+
+.logo {
+    width: 400px;
+    height: 600px;
+}
