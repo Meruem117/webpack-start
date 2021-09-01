@@ -19,62 +19,54 @@ module.exports = {
         path: resolve(__dirname, 'build')
     },
     module: {
-        rules: [{
+        rules: [
+            {
                 test: /\.js$/,
                 exclude: /node_modules/,
+                enforce: 'pre',
                 use: [{
-                        loader: 'eslint-loader',
-                        options: {
-                            // fix: true
-                        }
+                    loader: 'eslint-loader',
+                    options: {
+                        fix: true
+                    }
+                }]
+            },
+            {
+                oneOf: [
+                    {
+                        test: /\.js$/,
+                        exclude: /node_modules/,
+                        use: [{
+                            loader: 'babel-loader',
+                            options: {}
+                        }]
                     },
                     {
-                        loader: 'babel-loader',
-                        options: {
-                            // presets: [
-                            //     [
-                            //         '@babel/preset-env',
-                            //         {
-                            //             useBuiltIns: 'usage',
-                            //             corejs: {
-                            //                 version: 3
-                            //             },
-                            //             targets: {
-                            //                 chrome: '60',
-                            //                 edge: '17'
-                            //             }
-                            //         }
-                            //     ]
-                            // ]
-                        }
-                    }
-                ]
-            },
-            {
-                test: /\.css$/,
-                use: [
-                    // 'style-loader',
-                    MiniCssExtractPlugin.loader,
-                    'css-loader',
-                    'postcss-loader'
-                ]
-            },
-            {
-                test: /\.(jpg|png|gif|ico)$/,
-                use: [{
-                    loader: 'url-loader',
-                    options: {
-                        limit: 8192,
-                        esModule: false,
-                        name: '[hash:10].[ext]',
-                        outputPath: 'images'
-                    }
-                }],
-                type: 'javascript/auto'
-            },
-            {
-                test: /\.html$/,
-                use: ['html-loader']
+                        test: /\.css$/,
+                        use: [
+                            // 'style-loader',
+                            MiniCssExtractPlugin.loader,
+                            'css-loader',
+                            'postcss-loader'
+                        ]
+                    },
+                    {
+                        test: /\.(jpg|png|gif|ico)$/,
+                        use: [{
+                            loader: 'url-loader',
+                            options: {
+                                limit: 8192,
+                                esModule: false,
+                                name: '[hash:10].[ext]',
+                                outputPath: 'images'
+                            }
+                        }],
+                        type: 'javascript/auto'
+                    },
+                    {
+                        test: /\.html$/,
+                        use: ['html-loader']
+                    }]
             }
         ]
     },
